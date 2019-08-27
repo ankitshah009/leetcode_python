@@ -45,3 +45,39 @@ class Solution:
             return self.findPeakElement(nums[mid+1:], mid + 1 + base)
 
 
+public class Solution {
+    public int findPeakElement(int[] nums) {
+        int l = 0, r = nums.length - 1;
+        while (l < r) {
+            int mid = (l + r) / 2;
+            if (nums[mid] > nums[mid + 1])
+                r = mid;
+            else
+                l = mid + 1;
+        }
+        return l;
+    }
+}
+
+
+### 
+
+#    Time complexity : O(log2(n))O\big(log_2(n)\big)O(log2​(n)). We reduce the search space in half at every step. Thus, the total search space will be consumed in log2(n)log_2(n)log2​(n) steps. Here, nnn refers to the size of numsnumsnums array.
+
+#    Space complexity : O(1)O(1)O(1). Constant extra space is used.
+
+
+
+public class Solution {
+    public int findPeakElement(int[] nums) {
+        return search(nums, 0, nums.length - 1);
+    }
+    public int search(int[] nums, int l, int r) {
+        if (l == r)
+            return l;
+        int mid = (l + r) / 2;
+        if (nums[mid] > nums[mid + 1])
+            return search(nums, l, mid);
+        return search(nums, mid + 1, r);
+    }
+}
