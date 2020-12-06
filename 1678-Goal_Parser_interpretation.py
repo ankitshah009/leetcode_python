@@ -65,3 +65,20 @@ class Solution:
 class Solution:
     def interpret(self, command: str) -> str:
         return command.replace('()','o').replace('(al)','al')
+
+#### Faster solution
+class Solution:
+    def interpret(self, comm: str) -> str:
+        i=0
+        ans=""
+        while(i<len(comm)):
+            if(comm[i]=='G'):
+                ans+='G'
+                i+=1
+            elif(comm[i]=='(' and comm[i+1]==')'):
+                ans+='o'
+                i+=2
+            else:
+                ans+='al'
+                i+=4
+        return ans 
