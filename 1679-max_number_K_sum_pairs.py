@@ -48,3 +48,17 @@ class Solution:
                     c+=1
         
         return c
+
+#### This is O(N) but over the unique keys - Not my solution - but smarter way of iterating. 
+class Solution:
+    def maxOperations(self, nums: List[int], k: int) -> int:
+        count_nums = collections.Counter(nums)
+        result = 0
+        for num in count_nums:
+            target = max(0, k - num)
+            if target == num:
+                result += count_nums[num] // 2
+            else:
+                result += min(count_nums[num], count_nums[target])
+            count_nums[num] = 0
+        return result
