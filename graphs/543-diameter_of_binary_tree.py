@@ -42,13 +42,13 @@ class Solution:
             if not node:
                 return 0
 
-            left_height = height(node.left)
-            right_height = height(node.right)
+            left_h = height(node.left)
+            right_h = height(node.right)
 
             # Update diameter (path through this node)
-            self.diameter = max(self.diameter, left_height + right_height)
+            self.diameter = max(self.diameter, left_h + right_h)
 
-            return 1 + max(left_height, right_height)
+            return 1 + max(left_h, right_h)
 
         height(root)
         return self.diameter
